@@ -93,11 +93,14 @@
                 android:id="@+id/button3"
                 android:text="Show Products" />
         </TableRow>
-        <ListView
-            android:id="@+id/idlist"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-        />
+        <TableRow>
+            <TextView
+                android:id="@+id/showPr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+            />
+        </TableRow>
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

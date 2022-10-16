@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -24,14 +27,23 @@ public class MainActivity extends AppCompatActivity {
         EditText code = findViewById(R.id.edit1);
         EditText name = findViewById(R.id.edit2);
         EditText price = findViewById(R.id.edit3);
-        ArrayList<Product> lista;
-        lista = new ArrayList<>();
+        TextView showPr = findViewById(R.id.showPr);
+        List<Product> lista = new ArrayList<>();
 
 
         addP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lista.add(new Product(code, name, price));
+                String Code = code.getText().toString();
+                String Name = name.getText().toString();
+                Double Price = Double.parseDouble(price.getText().toString());
+
+                 lista.add(new Product(Code,Name,Price));
+                    code.setText("");
+                    name.setText("");
+                    price.setText("");
+                 Toast toast = Toast.makeText(MainActivity.this, "Hozzaadva", Toast.LENGTH_SHORT);
+                 toast.show();
             }
         });
 
@@ -47,7 +59,13 @@ public class MainActivity extends AppCompatActivity {
         showP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String text = "";
 
+                for(Product product : lista){
+                    text += product.toString();
+                }
+
+                showPr.setText(text);
             }
         });
     }
