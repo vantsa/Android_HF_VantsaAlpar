@@ -24,14 +24,20 @@ public class CustomAdapter extends ArrayAdapter {
     //to store the list of countries
     private final String[] infoArray;
 
+    private final String[] buyArray;
+
+    private final String[] sellArray;
+
     public CustomAdapter(Activity context, String[] nameArrayParam,
-                         String[] infoArrayParam, Integer[] imageIDArrayParam){
+                         String[] infoArrayParam, Integer[] imageIDArrayParam, String[] buyArrayParam, String[] sellArrayParam){
 
         super(context, R.layout.list_item, nameArrayParam);
         this.context=context;
         this.imageIDarray = imageIDArrayParam;
         this.nameArray = nameArrayParam;
         this.infoArray = infoArrayParam;
+        this.sellArray = sellArrayParam;
+        this.buyArray = buyArrayParam;
     }
 
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -41,10 +47,14 @@ public class CustomAdapter extends ArrayAdapter {
         TextView nev = rowView.findViewById(R.id.textView);
         TextView leiras = rowView.findViewById(R.id.textView2);
         ImageView kep = rowView.findViewById(R.id.imageView);
+        TextView buy = rowView.findViewById(R.id.textView3);
+        TextView sell = rowView.findViewById(R.id.textView4);
 
         nev.setText(nameArray[position]);
         leiras.setText(infoArray[position]);
         kep.setImageResource(imageIDarray[position]);
+        buy.setText(buyArray[position]);
+        sell.setText(sellArray[position]);
 
 
 
